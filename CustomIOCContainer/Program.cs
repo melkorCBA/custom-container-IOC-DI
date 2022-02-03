@@ -3,13 +3,11 @@ using CustomIOCContainer;
 
 var container = new CustomContainer();
 
-container.AddTransient<IWelcomer, Welcomer>();
-container.AddTransient<IGreeter, Greeter>();
+container.AddSingelton<IWelcomer, Welcomer>();
 container.AddSingelton<IWriter, ConsoleWriter>();
+container.AddTransient<IGreeter, Greeter>();
 
 
-var welcomer = container.GetService<IWelcomer>();
 
-welcomer.SayHelloTo("World");
 var greeter = container.GetService<IGreeter>();
 greeter.SayHelloTo("World");
